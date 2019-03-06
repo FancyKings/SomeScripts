@@ -31,15 +31,10 @@ def clean(f):
     nowfiles = getFilesList(f)
     print(nowfiles)
     for i in nowfiles:
-        print(i)
         a, b = os.path.splitext(i)
-        print(b)
         if b == '.exe':
-            print('get')
             if not os.path.exists(f + '\\exe\\'):
                 os.mkdir(f + '\\exe\\')
-            print(f + i)
-            print(f + 'exe\\')
             shutil.move(f + i, f + '\\exe\\')
     nowdirs = getDirsList(f)
     for i in nowdirs:
