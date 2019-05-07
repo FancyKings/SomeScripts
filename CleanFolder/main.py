@@ -16,7 +16,7 @@ def getDirsList(f):
 
 
 # 返回传入路径 f 文件夹下的所有文件，未加筛选
-def getFilesLists(f):
+def getFilesList(f):
     f = str(f)
     if f == "":
         return []
@@ -28,13 +28,21 @@ def getFilesLists(f):
 
 def clean(f):
     # print(f)
-    nowfiles = getFilesList(f)
-    print(nowfiles)
-    for i in nowfiles:
+    nowFiles = getFilesList(f)
+    if len(nowFiles) is not 0:
+        print(nowFiles)
+    for i in nowFiles:
+        print(i)
         a, b = os.path.splitext(i)
+        #print(b)
         if b == '.exe':
+            print('get a .exe')
             if not os.path.exists(f + '\\exe\\'):
                 os.mkdir(f + '\\exe\\')
+            print(f + i)
+            print(f + 'exe\\')
+            if os.path.exists(f + '\\exe\\' + i):
+                os.remove(f + '\\exe\\' + i)
             shutil.move(f + i, f + '\\exe\\')
     nowdirs = getDirsList(f)
     for i in nowdirs:
